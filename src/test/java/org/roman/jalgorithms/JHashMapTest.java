@@ -11,8 +11,6 @@ import java.util.List;
 
 public class JHashMapTest {
 
-    //Протестировать даже вызов size, ведь в будущем может все поменятся и сломается потом
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -37,8 +35,6 @@ public class JHashMapTest {
         //thrown.expect(IOException.class);
         //Кот
         //thrown = ExpectedException.none();
-
-
     }
 
     @Test

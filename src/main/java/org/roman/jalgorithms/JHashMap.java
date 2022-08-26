@@ -13,7 +13,7 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
     * Механизм разрешения коллизий - метод цепочек
     * */
 
-    //todo автоматическое изменение размера массива при перегрузке
+    //автоматическое изменение размера массива при перегрузке
 
     //Вместимость
     private final int initialCapacity;
