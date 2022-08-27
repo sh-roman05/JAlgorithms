@@ -1,5 +1,5 @@
 # JAlgorithms
 
-Ассоциативный массив (JMap)
-Хеш-таблица (JHashMap)
+Ассоциативный массив (JMap) </br>
+Хеш-таблица (JHashMap) </br>
 Двоичное дерево поиска (JBinaryTreeMap)
