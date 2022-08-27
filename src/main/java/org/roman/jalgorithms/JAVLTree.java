@@ -153,6 +153,7 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
     }
 
     private Node<Key, Value> rotateLeft(Node<Key, Value> root) {
+        //Поворот дерева влево с сохранением сортировки
         Node<Key, Value> newRoot = root.right;
         root.right = newRoot.left;
         newRoot.left = root;
@@ -162,6 +163,7 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
     }
 
     private Node<Key, Value> rotateRight(Node<Key, Value> root) {
+        //Поворот дерева вправо с сохранением сортировки
         Node<Key, Value> newRoot = root.left;
         root.left = newRoot.right;
         newRoot.right = root;

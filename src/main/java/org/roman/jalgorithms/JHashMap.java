@@ -11,6 +11,7 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
     /*
     * Структура данных: Хэш-таблица
     * Механизм разрешения коллизий - метод цепочек
+    * Преобразует уникальный ключ объекта в номер элемента массива
     * */
 
     //автоматическое изменение размера массива при перегрузке
@@ -41,7 +42,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
             throw new IllegalArgumentException("Illegal initial capacity: " + initialCapacity + ". The number must be positive");
 
         this.initialCapacity = Math.min(initialCapacity, MAX_CAPACITY);
-
 
         table = (List<Node<Key, Value>>[]) new LinkedList[initialCapacity];
         Arrays.fill(table, new LinkedList<>());

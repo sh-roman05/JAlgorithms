@@ -11,7 +11,7 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
 
     private int size = 0;
 
-    private static class Node<K, V> implements Serializable, Cloneable {
+    private static class Node<K, V> implements Serializable {
         private K key;
         private V value;
 
@@ -211,4 +211,5 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         }
         return false;
     }
+
 }
