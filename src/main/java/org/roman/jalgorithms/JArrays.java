@@ -5,99 +5,73 @@ import java.util.Random;
 
 public class JArrays {
 
-
-
-    //Сортировки
-    //Сортировка слиянием
-    //Пузырьковая сортировка
-
-    //quickSort
-
-
-
-
-    /**
-     * Sorts the specified array into ascending numerical order.
-     *
-     *
-     * @param source the array to be sorted
-     */
-    public static void mergeSort(int[] source) {
-        //Массив рекурсивно разбивается пополам, пока не будет равным единице
-        if(source.length <= 1) return;
-        int center = source.length / 2;
-        int[] leftArray = Arrays.copyOfRange(source, 0, center);
-        int[] rightArray = Arrays.copyOfRange(source, center, source.length);
-        mergeSort(leftArray);
-        mergeSort(rightArray);
-        //Слияние двух отсортированных массивов
-        merge(source, leftArray, rightArray);
-    }
-    private static void merge(int[] source, int[] left, int[] right) {
-        //У каждого подмассива должен быть счетчик
-        int countLeft = 0, countRight = 0, countSource = 0;
-        //Повторяем пока не заполним новый массив
-        while (countSource < source.length) {
-            //Прицепляем остаток
-            if(countLeft == left.length) {
-                for (int i = countRight; i < right.length; i++) {
-                    source[countSource] = right[countRight];
-                    countSource++;
-                    countRight++;
-                }
-                break;
-            }
-            else if(countRight == right.length) {
-                for (int i = countLeft; i < left.length; i++) {
-                    source[countSource] = left[countLeft];
-                    countSource++;
-                    countLeft++;
-                }
-                break;
-            }
-            //берём меньший из двух первых элементов подмассивов
-            if(left[countLeft] > right[countRight]) {
-                //Сохраняем правый элемент
-                source[countSource] = right[countRight];
-                countSource++;
-                countRight++;
-            }
-            else {
-                //Сохраняем левый элемент
-                source[countSource] = left[countLeft];
-                countSource++;
-                countLeft++;
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-    public static <T extends Comparable<T>> void bubbleSort(T[] source)
-    {
-        boolean isSorted = false;
-        while (!isSorted)
-        {
-            boolean isDone = true;
-            for (int i = 0; i < source.length - 1; i++)
-            {
-                if(source[i].compareTo(source[i + 1]) > 0)
-                {
-                    T swap = source[i];
+    /* Сортировка пузырьком */
+    public static <T extends Comparable<T>> void bubbleSort(T[] source) {
+        var isSorted = false;
+        while (!isSorted) {
+            var done = true;
+            for (int i = 0; i < source.length - 1; i++) {
+                if(source[i].compareTo(source[i + 1]) > 0 ) {
+                    var temp = source[i];
                     source[i] = source[i + 1];
-                    source[i + 1] = swap;
-                    isDone = false;
+                    source[i + 1] = temp;
+                    done = false;
                 }
             }
-            if(isDone) isSorted = true;
+            if(done) isSorted = true;
+        }
+    }
+
+    /* Сортировка перемешиванием (шейкерная сортировка) */
+    public static <T extends Comparable<T>> void shakerSort(T[] source) {
+        var left = 0;
+        var right = source.length - 1;
+        while (left < right) {
+            //Едем вправо
+            for (int i = left; i < right; i++) {
+                if(source[i].compareTo(source[i + 1]) > 0) {
+                    var temp = source[i];
+                    source[i] = source[i + 1];
+                    source[i + 1] = temp;
+                }
+            }
+            right--;
+            //Едем влево
+            for (int i = right; i > left; i--) {
+                if(source[i - 1].compareTo(source[i]) > 0) {
+                    var temp = source[i];
+                    source[i] = source[i - 1];
+                    source[i - 1] = temp;
+                }
+            }
+            left++;
+        }
+    }
+
+    /* Сортировка вставками */
+    public static <T extends Comparable<T>> void insertionSort(T[] source) {
+        for (int i = 1; i < source.length; i++) {
+            //Берем элемент, идем обратно и свапаем пока не дойдем до нужного места
+            for (int j = i; j > 0 &&  (source[j - 1].compareTo(source[j]) > 0); j--) {
+                var temp = source[j];
+                source[j] = source[j - 1];
+                source[j - 1] = temp;
+            }
         }
     }
 
 
+    /* Сортировка выбором */
+    public static <T extends Comparable<T>> void selectionSort(T[] source) {
+        //
+    }
+
+
+
+
+
+
+    /* Сортировка слиянием */
+    public static <T extends Comparable<T>> void mergeSort(T[] source) {}
 
 }

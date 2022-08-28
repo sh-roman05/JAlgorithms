@@ -8,6 +8,32 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
+
+
+
+
+
+
+        Integer[] qwe = { 1, 6, 2, 8, 3, 0, -1 };
+        JArrays.insertionSort(qwe);
+        for (int i = 0; i < qwe.length; i++) {
+            System.out.print(qwe[i] + " ");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /*JMap<Integer, String> map = new JHashMap<>();
         map.put(5, "test5");
         map.put(4, "test4");
@@ -30,8 +56,6 @@ public class Main {
         System.out.println(map.size());
         objectInputStream.close();*/
 
-
-
         //Общий тест
 
 
@@ -39,10 +63,7 @@ public class Main {
         //JRandBinaryTreeMap<Integer, Integer> test = new JRandBinaryTreeMap<>(); //удаление
         //JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
         //JHashMap<Integer, Integer> test = new JHashMap<>();
-        JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
-
-        Integer[] qwe = { 1, 2, 3  };
-        JArrays.bubbleSort(qwe);
+        /*JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
 
 
         for (int i = 0; i < 40000; i++) {
@@ -55,7 +76,7 @@ public class Main {
         System.out.println(test.get(333));
 
         test.remove(5);
-        test.remove(6);
+        test.remove(6);*/
         //test.remove(7);
 
 
