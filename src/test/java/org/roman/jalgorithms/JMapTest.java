@@ -3,13 +3,8 @@ package org.roman.jalgorithms;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
-
-public class JHashMapTest {
+public class JMapTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -17,32 +12,33 @@ public class JHashMapTest {
     JMap<Integer, Integer> map;
 
     @Before
-    public void JHashMapTestInit() {
+    public void JMapTestInit() {
         map = new JHashMap<>(2000);
     }
 
     @After
-    public void JHashMapTestClear() {
+    public void JMapTestClear() {
         map.clear();
     }
 
 
     @Test
-    public void JHashMapTestGeneral() {
+    public void JMapTestGeneral() {
 
         map = new JHashMap<>(500);
-
         //thrown.expect(IOException.class);
         //Кот
         //thrown = ExpectedException.none();
     }
 
     @Test
-    public void JHashMapPutTest() {
-        JHashMapPutTest(new JHashMap<>());
-        JHashMapPutTest(new JBinaryTreeMap<>());
+    public void JMapTestStart() {
+        JMapTest1(new JHashMap<>());
+        JMapTest1(new JBinaryTreeMap<>());
+        JMapTest1(new JRandBinaryTreeMap<>());
+        JMapTest1(new JAVLTree<>());
     }
-    public void JHashMapPutTest(JMap<Integer, Integer> testMap) {
+    public void JMapTest1(JMap<Integer, Integer> testMap) {
         Assert.assertTrue(testMap.isEmpty());
 
         for (int i = 0; i < 2000; i++)
@@ -52,10 +48,14 @@ public class JHashMapTest {
         Assert.assertEquals(2000, testMap.size());
         Assert.assertFalse(testMap.isEmpty());
 
+        //Обновление значений
         testMap.put(1000, 1917);
         Integer test = testMap.get(1000);
         Assert.assertNotNull(test);
         Assert.assertEquals((Integer) 1917, test);
+
+        //test.put(100, null);
+        //System.out.println(test.containsKey(100));
     }
 
 

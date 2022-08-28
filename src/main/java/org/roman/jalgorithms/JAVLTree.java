@@ -5,9 +5,19 @@ import java.util.Stack;
 
 public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, Value>, Serializable {
 
-    //https://habr.com/ru/post/150732/
+    /*
+    * АВЛ-дерево
+    *
+    *
+    * */
+
+
+
+    //Поскольку я реализовал работу через стек, на больших данных будет ошибка StackOverflow
+    //Переделать на итеративный подход
 
     private Node<Key, Value> root = null;
+    private int size = 0;
 
     private static final long serialVersionUID = 2488425698051L;
 
@@ -26,17 +36,18 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return root == null;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public void clear() {
         root = null;
+        size = 0;
     }
 
     @Override
@@ -59,6 +70,7 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
             Node<Key, Value> min = findMin(rt);
             min.left = lt;
             min.right = removeMin(rt);
+            size--;
             return balance(min);
         }
         return balance(root);
@@ -81,7 +93,10 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
     }
 
     private Node<Key, Value> put(Node<Key, Value> root, Key key, Value value) {
-        if (root == null) return new Node<>(key, value);
+        if (root == null) {
+            size++;
+            return new Node<>(key, value);
+        }
         int compare = key.compareTo(root.key);
         if (compare < 0) {
             root.left = put(root.left, key, value);
@@ -94,16 +109,21 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
         return balance(root);
     }
 
+
+
     @Override
     public Value get(Key key) {
-        return get(root, key);
+        var el = getNode(root, key);
+        return (el != null) ? el.value : null;
     }
 
     @Override
     public boolean containsKey(Key key) {
-        return get(root, key) != null;
+        var el = getNode(root, key);
+        return el != null;
     }
 
+    //исправить
     @Override
     public boolean containsValue(Value value) {
         Node<Key, Value> source = root;
@@ -123,15 +143,16 @@ public class JAVLTree<Key extends Comparable<Key>, Value> implements JMap<Key, V
         return false;
     }
 
-    private Value get(Node<Key, Value> root, Key key) {
+    //Рекурсивно идем по дереву и отдаем искомый элемент либо null
+    private Node<Key, Value> getNode(Node<Key, Value> root, Key key) {
         if (root == null) return null;
         int compare = key.compareTo(root.key);
         if (compare < 0) {
-            return get(root.left, key);
+            return getNode(root.left, key);
         } else if (compare > 0) {
-            return get(root.right, key);
+            return getNode(root.right, key);
         } else {
-            return root.value;
+            return root;
         }
     }
 

@@ -6,6 +6,16 @@ import java.util.Stack;
 
 public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<Key, Value>, Serializable {
 
+    /*
+    * Рандомизированное дерево поиска
+    * Обеспечивают логарифмическую сложность выполнения основных операций
+    *
+    * */
+
+    //Поскольку я реализовал работу через стек, на больших данных будет ошибка StackOverflow
+    //Переделать на итеративный подход
+
+
     //https://www.youtube.com/watch?v=qO9epiZZomk
     //https://www.youtube.com/watch?v=Bcv243cpZbw
     //https://habr.com/ru/post/145388/

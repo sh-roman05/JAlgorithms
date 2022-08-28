@@ -37,15 +37,26 @@ public class Main {
 
         //Create
         //JRandBinaryTreeMap<Integer, Integer> test = new JRandBinaryTreeMap<>(); //удаление
-        JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
+        //JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
         //JHashMap<Integer, Integer> test = new JHashMap<>();
-        //JAVLTree<Integer, Integer> test = new JAVLTree<>();
+        JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
+
+        Integer[] qwe = { 1, 2, 3  };
+        JArrays.bubbleSort(qwe);
 
 
-        test.put(100, null);
-        System.out.println(test.containsKey(100));
+        for (int i = 0; i < 40000; i++) {
+            test.put(i, i * 2);
+        }
+        System.out.println(test.size());
 
+        System.out.println(test.get(333));
+        test.remove(333);
+        System.out.println(test.get(333));
 
+        test.remove(5);
+        test.remove(6);
+        //test.remove(7);
 
 
 

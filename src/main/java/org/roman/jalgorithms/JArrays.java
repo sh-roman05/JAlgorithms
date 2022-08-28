@@ -5,9 +5,11 @@ import java.util.Random;
 
 public class JArrays {
 
-    //Примитивные типы
-    //char, boolean, float, double, byte, short, int, long, Object
 
+
+    //Сортировки
+    //Сортировка слиянием
+    //Пузырьковая сортировка
 
     //quickSort
 
@@ -69,24 +71,12 @@ public class JArrays {
         }
     }
 
-    public static void bubbleSort(int[] source)
-    {
-        boolean isSorted = false;
-        while (!isSorted)
-        {
-            boolean isDone = true;
-            for (int i = 0; i < source.length - 1; i++) {
-                if(source[i] > source[i + 1])
-                {
-                    int swap = source[i];
-                    source[i] = source[i + 1];
-                    source[i + 1] = swap;
-                    isDone = false;
-                }
-            }
-            if(isDone) isSorted = true;
-        }
-    }
+
+
+
+
+
+
 
     public static <T extends Comparable<T>> void bubbleSort(T[] source)
     {
@@ -108,107 +98,6 @@ public class JArrays {
         }
     }
 
-
-
-
-
-
-
-
-
-    /* Тасование Фишера-Йетса */
-
-    public static void shuffle(char[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            char temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-
-    public static void shuffle(boolean[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            boolean temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(float[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            float temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(double[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            double temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(byte[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            byte temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(short[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            short temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(int[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            int temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(long[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            long temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
-    public static void shuffle(Object[] array){
-        int maxIndex = array.length - 1;
-        Random random = new Random();
-        for (int i = maxIndex; i > 0; i--) {
-            int rnd = random.nextInt(maxIndex);
-            Object temp = array[rnd];
-            array[rnd] = array[i];
-            array[i] = temp;
-        }
-    }
 
 
 }
