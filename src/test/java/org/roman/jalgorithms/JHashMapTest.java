@@ -39,21 +39,25 @@ public class JHashMapTest {
 
     @Test
     public void JHashMapPutTest() {
-        map = new JHashMap<>(500);
-        Assert.assertTrue(map.isEmpty());
+        JHashMapPutTest(new JHashMap<>());
+        JHashMapPutTest(new JBinaryTreeMap<>());
+    }
+    public void JHashMapPutTest(JMap<Integer, Integer> testMap) {
+        Assert.assertTrue(testMap.isEmpty());
 
         for (int i = 0; i < 2000; i++)
-            map.put(i, i);
+            testMap.put(i, i);
         for (int i = 0; i < 2000; i++)
-            map.put(i, i * 2);
-        Assert.assertEquals(2000, map.size());
-        Assert.assertFalse(map.isEmpty());
+            testMap.put(i, i * 2);
+        Assert.assertEquals(2000, testMap.size());
+        Assert.assertFalse(testMap.isEmpty());
 
-        map.put(1000, 1917);
-        Integer test = map.get(1000);
+        testMap.put(1000, 1917);
+        Integer test = testMap.get(1000);
         Assert.assertNotNull(test);
         Assert.assertEquals((Integer) 1917, test);
     }
+
 
 
     @Test

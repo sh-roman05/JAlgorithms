@@ -14,13 +14,12 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
     * Преобразует уникальный ключ объекта в номер элемента массива
     * */
 
-    //автоматическое изменение размера массива при перегрузке
-
     //Вместимость
     private final int initialCapacity;
     //Количество элементов
     private int size = 0;
 
+    //автоматическое изменение размера массива при перегрузке
     //Коэффициент заполнения хеш-таблицы.
     //double loadFactor = 0.75; //размер на количество элементов
 
@@ -91,7 +90,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
 
     @Override
     public void put(Key key, Value value) {
-        //А если уже существует ключ???
         int hash = hash(key);
         Node<Key, Value> temp = new Node<>(key, value);
         if(table[hash].contains(temp)) {
@@ -140,7 +138,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
     void resize(){
         table = (List<Node<Key, Value>>[]) new LinkedList[20000];
     }*/
-
 
     @Override
     public int size() {

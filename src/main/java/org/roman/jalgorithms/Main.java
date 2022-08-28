@@ -37,18 +37,23 @@ public class Main {
 
         //Create
         //JRandBinaryTreeMap<Integer, Integer> test = new JRandBinaryTreeMap<>(); //удаление
-        //JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
-        JHashMap<Integer, Integer> test = new JHashMap<>();
+        JBinaryTreeMap<Integer, Integer> test = new JBinaryTreeMap<>();
+        //JHashMap<Integer, Integer> test = new JHashMap<>();
         //JAVLTree<Integer, Integer> test = new JAVLTree<>();
 
 
-        /*for (int i = 0; i < 40000; i++) {
+        test.put(100, null);
+        System.out.println(test.containsKey(100));
+
+
+
+
+
+        /*test.remove(5000);
+        test.remove(1000);
+        for (int i = 0; i < 40000; i++) {
             test.put(i, i * 2);
         }
-
-        test.remove(5000);
-        test.remove(1000);
-
         long time = System.nanoTime();
 
         System.out.println(test.get(10000));

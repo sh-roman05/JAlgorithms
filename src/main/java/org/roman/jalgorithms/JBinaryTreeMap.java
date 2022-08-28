@@ -169,14 +169,18 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
 
     @Override
     public Value get(Key key) {
-        Node<Key, Value> search = root;
-        Value result = null;
+        var result = getNode(key);
+        return (result != null) ? result.value : null;
+    }
 
+    private Node<Key, Value> getNode(Key key) {
+        Node<Key, Value> search = root;
+        Node<Key, Value> result = null;
         while (search != null) {
             int compare = key.compareTo(search.key);
             if(compare == 0) {
                 //Ключ найден
-                result = search.value;
+                result = search;
                 break;
             } else {
                 if(compare < 0)
@@ -188,9 +192,10 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         return result;
     }
 
+
     @Override
     public boolean containsKey(Key key) {
-        return get(key) != null;
+        return getNode(key) != null;
     }
 
     @Override
