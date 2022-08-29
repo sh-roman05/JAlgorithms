@@ -82,8 +82,92 @@ public class JArrays {
 
     /* Быстрая сортировка */
     public static <T extends Comparable<T>> void quickSort(T[] source) {
-        //
+        recursiveQuickSort(source, 0, source.length - 1);
     }
+
+    //Выбираем опорный элемент, упорядочиваем массив, фиксируем новое место опорного элемента
+    private static <T extends Comparable<T>> int getPivot(T[] source, int min, int max) {
+
+
+        int pivot = (min + max) / 2;
+
+        int left = min, right = max;
+
+        while (left <= right) {
+
+
+
+            left++;
+
+
+            right--;
+
+            //
+        }
+
+
+        /*
+
+
+        {
+            //
+
+            while (true){}
+            while (true){}
+
+            //
+        }*/
+
+
+
+        //Идем циклом в данных нам границах
+        for (int i = min; i <= max; i++) {
+
+
+            swap(source, 1, 2);
+
+        }
+        
+
+        return 0;
+    }
+
+    private static <T extends Comparable<T>> T[] recursiveQuickSort(T[] source, int min, int max) {
+
+        //Условие окончания работы рекурсии
+        if(min >= max) return source;
+
+        //Опорный элемент
+        int pivot = getPivot(source, min, max);
+
+        //Алгоритм переупорядочения
+        //Элементы рассматриваемого массива сравниваются с опорным элементом
+
+
+
+
+        //Перетасовать массив
+
+        //Опорный элемент сменит индекс после перестановки
+        //recursiveQuickSort(source, min, pivot - 1);
+        //recursiveQuickSort(source, pivot + 1, max);
+
+
+
+
+
+
+        return source;
+    }
+
+
+    private static <T extends Comparable<T>> void swap(T[] source, int index1, int index2) {
+        var temp = source[index1];
+        source[index1] = source[index2];
+        source[index2] = temp;
+    }
+
+
 
 
 
