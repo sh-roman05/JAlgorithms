@@ -15,7 +15,7 @@ public class Main {
 
 
         Integer[] qwe = { 1, 6, 2, 8, 3, 0, -1 };
-        JArrays.insertionSort(qwe);
+        JArrays.selectionSort(qwe);
         for (int i = 0; i < qwe.length; i++) {
             System.out.print(qwe[i] + " ");
         }

@@ -63,11 +63,27 @@ public class JArrays {
 
     /* Сортировка выбором */
     public static <T extends Comparable<T>> void selectionSort(T[] source) {
-        //
+        var border = 0;
+        for (int i = 0; i < source.length; i++) {
+            //Находим минимальный элемент в массиве
+            var indexMin = border;
+            for (int j = border; j < source.length; j++) {
+                if(source[j].compareTo(source[indexMin]) < 0)
+                    indexMin = j;
+            }
+            //Вставляем в начало на границу border
+            var temp = source[i];
+            source[i] = source[indexMin];
+            source[indexMin] = temp;
+            //Уменьшаем границу неотсортированного массива
+            border++;
+        }
     }
 
-
-
+    /* Быстрая сортировка */
+    public static <T extends Comparable<T>> void quickSort(T[] source) {
+        //
+    }
 
 
 
