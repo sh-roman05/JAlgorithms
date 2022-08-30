@@ -93,71 +93,74 @@ public class JArrays {
 
         int left = min, right = max;
 
-        while (left <= right) {
+        while (left < right) {
+
+            System.out.println(": " + left + " " + right);
+
+            //Если элемент на месте, двигаем границу
+            while (source[left].compareTo(source[pivot]) < 0) {
+                left++;
+            }
 
 
 
-            left++;
+            while (source[right].compareTo(source[pivot]) > 0) {
+                right--;
+            }
+            System.out.println(": " + left + " " + right);
 
 
-            right--;
 
-            //
+
+            if(left == right) break;
+
+
+            //Если мы присвоили значение, то след условие нельзя выполнять
+            if(left == pivot)
+                pivot = right;
+            else if(right == pivot)
+                pivot = left;
+
+            swap(source, left, right);
+
+            System.out.println("swap: " + left + " " + right);
+
+            //break;
         }
 
 
-        /*
-
-
-        {
-            //
-
-            while (true){}
-            while (true){}
-
-            //
-        }*/
 
 
 
-        //Идем циклом в данных нам границах
-        for (int i = min; i <= max; i++) {
+        //Новый pivot ?
 
 
-            swap(source, 1, 2);
-
-        }
         
 
-        return 0;
+        return pivot;
     }
 
-    private static <T extends Comparable<T>> T[] recursiveQuickSort(T[] source, int min, int max) {
+    private static <T extends Comparable<T>> void recursiveQuickSort(T[] source, int min, int max) {
 
         //Условие окончания работы рекурсии
-        if(min >= max) return source;
+        if(min >= max) return;
 
         //Опорный элемент
         int pivot = getPivot(source, min, max);
 
+        //Проверка
+        System.out.print("Массив (" + min + ", " + max + "): ");
+        for (T t : source) {
+            System.out.print(t + " ");
+        }
+        System.out.print("| pivot: " + pivot);
+
         //Алгоритм переупорядочения
         //Элементы рассматриваемого массива сравниваются с опорным элементом
-
-
-
-
         //Перетасовать массив
-
         //Опорный элемент сменит индекс после перестановки
         //recursiveQuickSort(source, min, pivot - 1);
         //recursiveQuickSort(source, pivot + 1, max);
-
-
-
-
-
-
-        return source;
     }
 
 

@@ -14,11 +14,12 @@ public class Main {
 
 
 
-        Integer[] qwe = { 1, 6, 2, 8, 3, 0, -1, -6, 7, 9 };
+        //Integer[] qwe = { 5, 16, 13, 8, 6, 1, 2 }; //Массив (0, 6): 5 2 1 6 8 13 16 | pivot: 4
+        Integer[] qwe = { 5, 16, 13, -10, 6, 1, 2 }; //Массив (0, 6): -10 16 13 5 6 1 2 | pivot: 0
         JArrays.quickSort(qwe);
-        for (int i = 0; i < qwe.length; i++) {
+        /*for (int i = 0; i < qwe.length; i++) {
             System.out.print(qwe[i] + " ");
-        }
+        }*/
 
 
 
