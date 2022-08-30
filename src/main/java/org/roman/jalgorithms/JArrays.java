@@ -85,84 +85,38 @@ public class JArrays {
         recursiveQuickSort(source, 0, source.length - 1);
     }
 
-    //Выбираем опорный элемент, упорядочиваем массив, фиксируем новое место опорного элемента
-    private static <T extends Comparable<T>> int getPivot(T[] source, int min, int max) {
-
-
-        int pivot = (min + max) / 2;
-
-        int left = min, right = max;
-
-        while (left < right) {
-
-            System.out.println(": " + left + " " + right);
-
-            //Если элемент на месте, двигаем границу
-            while (source[left].compareTo(source[pivot]) < 0) {
-                left++;
-            }
-
-
-
-            while (source[right].compareTo(source[pivot]) > 0) {
-                right--;
-            }
-            System.out.println(": " + left + " " + right);
-
-
-
-
-            if(left == right) break;
-
-
-            //Если мы присвоили значение, то след условие нельзя выполнять
-            if(left == pivot)
-                pivot = right;
-            else if(right == pivot)
-                pivot = left;
-
-            swap(source, left, right);
-
-            System.out.println("swap: " + left + " " + right);
-
-            //break;
-        }
-
-
-
-
-
-        //Новый pivot ?
-
-
-        
-
-        return pivot;
-    }
-
     private static <T extends Comparable<T>> void recursiveQuickSort(T[] source, int min, int max) {
 
-        //Условие окончания работы рекурсии
-        if(min >= max) return;
+        if (min >= max)
+            return;
 
-        //Опорный элемент
-        int pivot = getPivot(source, min, max);
+        int pivotIndex = (min + max) / 2;
 
-        //Проверка
-        System.out.print("Массив (" + min + ", " + max + "): ");
-        for (T t : source) {
-            System.out.print(t + " ");
+        var left = min;
+        var right = max;
+
+        while (left < right) {
+            while (source[left].compareTo(source[pivotIndex]) <= 0
+                    && left < pivotIndex)
+                left++;
+
+            while (source[right].compareTo(source[pivotIndex]) >= 0
+                    && right > pivotIndex)
+                right--;
+
+            if(left < right) {
+                swap(source, left, right);
+
+                if(left == pivotIndex)
+                    pivotIndex = right;
+                else if(right == pivotIndex)
+                    pivotIndex = left;
+            }
         }
-        System.out.print("| pivot: " + pivot);
 
-        //Алгоритм переупорядочения
-        //Элементы рассматриваемого массива сравниваются с опорным элементом
-        //Перетасовать массив
-        //Опорный элемент сменит индекс после перестановки
-        //recursiveQuickSort(source, min, pivot - 1);
-        //recursiveQuickSort(source, pivot + 1, max);
+        recursiveQuickSort(source, min, pivotIndex);
+        recursiveQuickSort(source, pivotIndex + 1, max);
     }
-
 
     private static <T extends Comparable<T>> void swap(T[] source, int index1, int index2) {
         var temp = source[index1];
@@ -173,6 +127,10 @@ public class JArrays {
 
 
 
+
+
+
+    //https://russianblogs.com/article/8932105252/
 
     /* Сортировка слиянием */
     public static <T extends Comparable<T>> void mergeSort(T[] source) {}

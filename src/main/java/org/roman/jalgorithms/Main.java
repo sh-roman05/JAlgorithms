@@ -15,15 +15,26 @@ public class Main {
 
 
         //Integer[] qwe = { 5, 16, 13, 8, 6, 1, 2 }; //Массив (0, 6): 5 2 1 6 8 13 16 | pivot: 4
-        Integer[] qwe = { 5, 16, 13, -10, 6, 1, 2 }; //Массив (0, 6): -10 16 13 5 6 1 2 | pivot: 0
+        //Integer[] qwe = { 5, 16, 13, -10, 6, 1, 2 }; //Массив (0, 6): -10 16 13 5 6 1 2 | pivot: 0
+
+        //Integer[] qwe = { 6, 6, 6 };
+
+        Integer[] qwe = { 16, 13, -10, 2, 13, 4, 13 };
+
         JArrays.quickSort(qwe);
-        /*for (int i = 0; i < qwe.length; i++) {
+        for (int i = 0; i < qwe.length; i++) {
             System.out.print(qwe[i] + " ");
-        }*/
+        }
 
 
 
-
+        //Проверка упорядоченности массива
+        boolean sort = true;
+        for (int i = 0; i < qwe.length - 1; i++) {
+            if(qwe[i] > qwe[i + 1])
+                sort = false;
+        }
+        System.out.println("\nsort - " + sort);
 
 
 
