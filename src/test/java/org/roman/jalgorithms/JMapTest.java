@@ -36,16 +36,16 @@ public class JMapTest {
         JMapTest1(new JHashMap<>());
         JMapTest1(new JBinaryTreeMap<>());
         JMapTest1(new JRandBinaryTreeMap<>());
-        JMapTest1(new JAVLTree<>());
+        //JMapTest1(new JAVLTree<>());
     }
     public void JMapTest1(JMap<Integer, Integer> testMap) {
         Assert.assertTrue(testMap.isEmpty());
 
-        for (int i = 0; i < 2000; i++)
+        for (int i = 0; i < 20000; i++)
             testMap.put(i, i);
-        for (int i = 0; i < 2000; i++)
+        for (int i = 0; i < 20000; i++)
             testMap.put(i, i * 2);
-        Assert.assertEquals(2000, testMap.size());
+        Assert.assertEquals(20000, testMap.size());
         Assert.assertFalse(testMap.isEmpty());
 
         //Обновление значений

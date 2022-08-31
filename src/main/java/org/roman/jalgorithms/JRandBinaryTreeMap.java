@@ -12,12 +12,7 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
     *
     * */
 
-    //Поскольку я реализовал работу через стек, на больших данных будет ошибка StackOverflow
-    //Переделать на итеративный подход
 
-
-    //https://www.youtube.com/watch?v=qO9epiZZomk
-    //https://www.youtube.com/watch?v=Bcv243cpZbw
     //https://habr.com/ru/post/145388/
 
     private Node<Key, Value> root = null;
@@ -102,6 +97,7 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
 
     private Node<Key, Value> put(Node<Key, Value> root, Key key, Value value) {
         if (root == null) return new Node<>(key, value);
+        //
         boolean insertAllowed = (random.nextInt() % (size(root) + 1) == 0) ? true : false;
         if(insertAllowed)
             return putInRoot(root, key, value);
@@ -137,6 +133,7 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
         return root;
     }
 
+    //Поворот дерева. Сохраняет правило сортировки.
     private Node<Key, Value> rotateLeft(Node<Key, Value> root) {
         Node<Key, Value> newRoot = root.right;
         root.right = newRoot.left;
@@ -146,6 +143,7 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
         return newRoot;
     }
 
+    //Поворот дерева. Сохраняет правило сортировки.
     private Node<Key, Value> rotateRight(Node<Key, Value> root) {
         Node<Key, Value> newRoot = root.left;
         root.left = newRoot.right;
@@ -157,24 +155,32 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
 
     @Override
     public Value get(Key key) {
-        return get(root, key);
+        var result = getNode(key);
+        return (result != null) ? result.value : null;
     }
 
-    private Value get(Node<Key, Value> root, Key key) {
-        if (root == null) return null;
-        int compare = key.compareTo(root.key);
-        if(compare < 0) {
-            return get(root.left, key);
-        } else if(compare > 0) {
-            return get(root.right, key);
-        } else {
-            return root.value;
+    private Node<Key, Value> getNode(Key key) {
+        Node<Key, Value> search = root;
+        Node<Key, Value> result = null;
+        while (search != null) {
+            int compare = key.compareTo(search.key);
+            if(compare == 0) {
+                //Ключ найден
+                result = search;
+                break;
+            } else {
+                if(compare < 0)
+                    search = search.left;
+                else
+                    search = search.right;
+            }
         }
+        return result;
     }
 
     @Override
     public boolean containsKey(Key key) {
-        return get(key) != null;
+        return getNode(key) != null;
     }
 
     @Override
@@ -186,7 +192,7 @@ public class JRandBinaryTreeMap<Key extends Comparable<Key>, Value> implements J
             if (!stack.empty())
                 source = stack.pop();
             while (source != null) {
-                if(source.value == value)
+                if(source.value.equals(value))
                     return true;
                 if (source.right != null)
                     stack.push(source.right);

@@ -6,26 +6,25 @@ import java.util.*;
 
 public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
 
-    private static final long serialVersionUID = 1385402501830L;
-
     /*
     * Структура данных: Хэш-таблица
     * Механизм разрешения коллизий - метод цепочек
     * Преобразует уникальный ключ объекта в номер элемента массива
     * */
 
+    //Автоматическое изменение размера массива при перегрузке
+    //Коэффициент заполнения хеш-таблицы.
+    //double loadFactor = 0.75; размер на количество элементов
+
+
+    private static final long serialVersionUID = 1385402501830L;
+
     //Вместимость
     private final int initialCapacity;
     //Количество элементов
     private int size = 0;
-
-    //автоматическое изменение размера массива при перегрузке
-    //Коэффициент заполнения хеш-таблицы.
-    //double loadFactor = 0.75; //размер на количество элементов
-
     //Максимальная вместимость
     private static final int MAX_CAPACITY = Integer.MAX_VALUE >> 1;
-
 
     private List<Node<Key, Value>>[] table;
 
@@ -45,7 +44,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         table = (List<Node<Key, Value>>[]) new LinkedList[initialCapacity];
         Arrays.fill(table, new LinkedList<>());
     }
-
 
     private static class Node<K, V> implements Serializable
     {
@@ -133,11 +131,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         }
         return temp;
     }
-
-    /*@SuppressWarnings("unchecked")
-    void resize(){
-        table = (List<Node<Key, Value>>[]) new LinkedList[20000];
-    }*/
 
     @Override
     public int size() {

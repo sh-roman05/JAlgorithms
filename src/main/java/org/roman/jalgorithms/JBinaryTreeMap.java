@@ -130,7 +130,7 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
 
         boolean isFound = false;
 
-        while (search != null){
+        while (search != null) {
             int compare = key.compareTo(search.key);
             //Ключи совпали
             if(compare == 0) {
@@ -198,17 +198,17 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         return getNode(key) != null;
     }
 
-    //Не работает, нужно дописать
+    //Полный обход дерева пока не найдено значение
     @Override
     public boolean containsValue(Value value) {
         Node<Key, Value> source = root;
         Stack<Node<Key, Value>> stack = new Stack<>();
-
         while (source != null || !stack.empty()) {
             if (!stack.empty())
                 source = stack.pop();
+
             while (source != null) {
-                if(source.value == value)
+                if(source.value.equals(value))
                     return true;
                 if (source.right != null)
                     stack.push(source.right);
@@ -217,5 +217,6 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         }
         return false;
     }
+
 
 }
