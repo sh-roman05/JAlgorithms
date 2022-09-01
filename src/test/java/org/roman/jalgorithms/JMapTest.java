@@ -9,34 +9,10 @@ public class JMapTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    JMap<Integer, Integer> map;
-
-    @Before
-    public void JMapTestInit() {
-        map = new JHashMap<>(2000);
-    }
-
-    @After
-    public void JMapTestClear() {
-        map.clear();
-    }
-
-
-    @Test
-    public void JMapTestGeneral() {
-
-        map = new JHashMap<>(500);
-        //thrown.expect(IOException.class);
-        //Кот
-        //thrown = ExpectedException.none();
-    }
-
     @Test
     public void JMapTestStart() {
         JMapTest1(new JHashMap<>());
         JMapTest1(new JBinaryTreeMap<>());
-        JMapTest1(new JRandBinaryTreeMap<>());
-        //JMapTest1(new JAVLTree<>());
     }
     public void JMapTest1(JMap<Integer, Integer> testMap) {
         Assert.assertTrue(testMap.isEmpty());
@@ -53,9 +29,6 @@ public class JMapTest {
         Integer test = testMap.get(1000);
         Assert.assertNotNull(test);
         Assert.assertEquals((Integer) 1917, test);
-
-        //test.put(100, null);
-        //System.out.println(test.containsKey(100));
     }
 
 
