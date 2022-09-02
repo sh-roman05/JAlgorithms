@@ -21,6 +21,9 @@ public class JLinkedList<Value extends Comparable<Value>> {
         }
     }
 
+    //Удаление по индексу
+    //Вставка по индексу
+
     public void clear() {
         head = null;
         tail = null;

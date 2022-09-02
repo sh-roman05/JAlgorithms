@@ -6,31 +6,14 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        JStack<Integer> list = new JStack<>();
 
-        //
-        //ArrayList<Integer> q;
-        //q.get();
+        list.push(1);
+        list.push(2);
+        list.push(3);
 
-
-
-        JLinkedList<Integer> list = new JLinkedList<>();
-
-        for (int i = 0; i < 10; i++) {
-            list.add(i);
-        }
-        System.out.println(list.size());
-
-        //list.remove(0);
-        //list.remove(9);
-
-        System.out.println(list.size());
-        for (int i = 0; i < 10; i++) {
-            System.out.println(list.contains(i));
-        }
-
-        System.out.println(list.get(9));
-
-
+        while (!list.isEmpty())
+            System.out.println(list.pop());
 
 
     }
