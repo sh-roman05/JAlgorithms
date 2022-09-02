@@ -7,10 +7,9 @@ public class JQueue<Value extends Comparable<Value>> {
     private int size = 0;
 
     private Node<Value> head = null;
-
+    private Node<Value> tail = null;
 
     private static class Node<T> {
-
         private T value = null;
         private Node<T> next = null;
 
@@ -19,32 +18,55 @@ public class JQueue<Value extends Comparable<Value>> {
         }
     }
 
-
-    //Добавление в конец
-    void add(){}
-
-
-
+    /**
+     * Добавляет значение
+     * @param value элемент, который требуется добавить в очередь
+     */
+    public void add(Value value) {
+        Node<Value> temp = new Node<>(value);
+        if (head == null) {
+            head = tail = temp;;
+        } else {
+            tail.next = temp;
+            tail = temp;
+        }
+        ++size;
+    }
 
     /**
      * Возвращает первый элемент списка и не удаляет его
      * @throws NoSuchElementException если список пустой
      * @return первый элемент списка
      */
-    //Value peek();
+    public Value peek() {
+        if(head == null)
+            throw new NoSuchElementException();
+        return head.value;
+    }
 
     /**
      * Возвращает первый элемент из списка и удаляет его
      * @throws NoSuchElementException если список пустой
      * @return первый элемент из связного списка
      */
-    //Value poll();
+    public Value poll() {
+        if (head == null)
+            throw new NoSuchElementException();
+        Value temp = head.value;
+        //Удаление первого элемента
+        if (head == tail)
+            head = tail = null;
+        else
+            head = head.next;
+        --size;
+        return temp;
+    }
 
     /**
      * Возвращает количество элементов в очереди
      * @return количество элементов в очереди
      */
-    int size() {
+    public int size() {
         return size;
     }
 
@@ -52,11 +74,9 @@ public class JQueue<Value extends Comparable<Value>> {
      * Возвращает {@code true} если в коллекции отсутствуют элементы.
      * @return {@code true} if this collection contains no elements
      */
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return head == null;
     }
-
-
 
     /**
      * Проверяет присутствие элемента в очереди
@@ -73,16 +93,12 @@ public class JQueue<Value extends Comparable<Value>> {
         return false;
     }
 
-
     /**
      * Очищает очередь
      */
-    void clear() {
-        head = null;
+    public void clear() {
+        head = tail = null;
         size = 0;
     }
-
-
-
 
 }

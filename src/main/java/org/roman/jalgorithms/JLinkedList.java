@@ -25,8 +25,7 @@ public class JLinkedList<Value extends Comparable<Value>> {
     //Вставка по индексу
 
     public void clear() {
-        head = null;
-        tail = null;
+        head = tail = null;
         size = 0;
     }
 
