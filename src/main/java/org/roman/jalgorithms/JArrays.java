@@ -6,7 +6,9 @@ import java.util.Random;
 
 public class JArrays {
 
-    /* Сортировка пузырьком */
+    /**
+     * Сортировка пузырьком
+     */
     public static <T extends Comparable<T>> void bubbleSort(T[] source) {
         if(source == null) return;
         var isSorted = false;
@@ -24,7 +26,9 @@ public class JArrays {
         }
     }
 
-    /* Сортировка перемешиванием (шейкерная сортировка) */
+    /**
+     * Сортировка перемешиванием (шейкерная сортировка)
+     */
     public static <T extends Comparable<T>> void shakerSort(T[] source) {
         if(source == null) return;
         var left = 0;
@@ -51,7 +55,9 @@ public class JArrays {
         }
     }
 
-    /* Сортировка вставками */
+    /**
+     * Сортировка вставками
+     */
     public static <T extends Comparable<T>> void insertionSort(T[] source) {
         if(source == null) return;
         for (int i = 1; i < source.length; i++) {
@@ -64,7 +70,9 @@ public class JArrays {
         }
     }
 
-    /* Сортировка выбором */
+    /**
+     * Сортировка выбором
+     */
     public static <T extends Comparable<T>> void selectionSort(T[] source) {
         if(source == null) return;
         var border = 0;
@@ -84,7 +92,9 @@ public class JArrays {
         }
     }
 
-    /* Быстрая сортировка */
+    /**
+     * Быстрая сортировка
+     */
     public static <T extends Comparable<T>> void quickSort(T[] source) {
         //assert source != null;
         recursiveQuickSort(source, 0, source.length - 1);
@@ -124,7 +134,9 @@ public class JArrays {
         source[index2] = temp;
     }
 
-    /* Сортировка слиянием */
+    /**
+     * Сортировка слиянием
+     */
     public static <T extends Comparable<T>> void mergeSort(T[] source) {
         if(source.length < 2) return;
         int center = source.length / 2;
@@ -150,5 +162,7 @@ public class JArrays {
         while (right < rightArray.length)
             source[index++] = rightArray[right++];
     }
+
+
 
 }

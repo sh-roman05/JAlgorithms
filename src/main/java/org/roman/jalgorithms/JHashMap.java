@@ -16,7 +16,6 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
     //Коэффициент заполнения хеш-таблицы.
     //double loadFactor = 0.75; размер на количество элементов
 
-
     private static final long serialVersionUID = 1385402501830L;
 
     //Вместимость
@@ -79,13 +78,18 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         }
     }
 
-    //Этот код маскирует знаковый бит
-    //Через остаток от деления получаем индекс в массиве
+    //0x7fffffff маскирует знаковый бит
     private int hash(Key key)
     {
         return (key == null) ? 0 : ((key.hashCode() & 0x7fffffff) % initialCapacity);
     }
 
+
+    /**
+     * Помещает ключ/значение в хеш-таблицу
+     * @param key ключ, который нужно вставить
+     * @param value значение, которое нужно вставить
+     */
     @Override
     public void put(Key key, Value value) {
         int hash = hash(key);
@@ -105,6 +109,10 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         }
     }
 
+    /**
+     * Удаляет ключ/значение по ключу
+     * @param key ключ, необходимый для поиска
+     */
     @Override
     public void remove(Key key) {
         int hash = hash(key);
@@ -117,6 +125,10 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         }
     }
 
+    /**
+     * Находит значение по ключу
+     * @param key ключ, необходимый для поиска
+     */
     @Override
     public Value get(Key key) {
         int hash = hash(key);
@@ -132,16 +144,30 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         return temp;
     }
 
+    /**
+     * Получить количество элементов в хеш-таблице
+     * @return количество элементов в хеш-таблице
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Содержится ли ключ в хеш-таблице
+     * @param key ключ, необходимый для поиска
+     * @return {@code true} если ключ присутствует в хеш-таблице
+     */
     @Override
     public boolean containsKey(Key key) {
         return (get(key) != null) ? true : false;
     }
 
+    /**
+     * Содержится ли значение в хеш-таблице
+     * @param value значение, необходимое для поиска
+     * @return {@code true} если значение присутствует в хеш-таблице
+     */
     @Override
     public boolean containsValue(Value value) {
         if (table != null && size > 0)
@@ -152,6 +178,9 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         return false;
     }
 
+    /**
+     * Очистить хеш-таблицу
+     */
     @Override
     public void clear() {
         if(table != null && size > 0) {
@@ -160,6 +189,10 @@ public class JHashMap<Key, Value> implements JMap<Key, Value>, Serializable {
         }
     }
 
+    /**
+     * Проверить, пустая ли хеш-таблица
+     * @return {@code true} если хеш-таблица пустая
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;

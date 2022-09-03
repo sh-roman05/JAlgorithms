@@ -24,22 +24,37 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         }
     }
 
+    /**
+     * Узнать, пустое ли дерево
+     * @return {@code true} если дерево пустое
+     */
     @Override
     public boolean isEmpty() {
         return root == null;
     }
 
+    /**
+     * Получить количество элементов в дереве
+     * @return число элементов в дереве
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Очистить дерево
+     */
     @Override
     public void clear() {
         root = null;
         size = 0;
     }
 
+    /**
+     * Удалить ключ/значение в дереве
+     * @param key ключ
+     */
     @Override
     public void remove(Key key) {
         if(root == null) return;
@@ -66,7 +81,8 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
 
         if(!isFound) return;
 
-        //Потомков нет
+        //Кейс: Потомков нет
+        //Просто удаляем ссылку на элемент
         if(currentNode.left == null && currentNode.right == null) {
             if(parent != null) {
                 if(selectRightNode)
@@ -79,7 +95,8 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
             size--;
         }
 
-        //Один потомок
+        //Кейс: Один потомок
+        //Присваиваем ссылку на потомка родителю
         if(currentNode.left == null ^ currentNode.right == null) {
             if(currentNode.left == null) {
                 if(parent == null) {
@@ -101,11 +118,12 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
             size--;
         }
 
-        //Два потомка
+        //Кейс: Два потомка
+        //Берем правый элемент, ищем у него самый левый элемент до конца, этот найденный элемент ставим на место удаленного
         if(currentNode.left != null && currentNode.right != null) {
             Node<Key, Value> findLeftMin = currentNode.right; //Берем правый элемент
             Node<Key, Value> last = null;
-            while (findLeftMin != null){
+            while (findLeftMin != null) {
                 last = findLeftMin;
                 findLeftMin = findLeftMin.left;
             }
@@ -122,6 +140,11 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
 
     }
 
+    /**
+     * Добавить в бинарное дерево значение по ключу
+     * @param key ключ
+     * @param value значение
+     */
     @Override
     public void put(Key key, Value value) {
 
@@ -167,6 +190,10 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
         }
     }
 
+    /**
+     * Найти в бинарном дереве значение по ключу
+     * @param key ключ, необходимый для поиска
+     */
     @Override
     public Value get(Key key) {
         var result = getNode(key);
@@ -193,12 +220,21 @@ public class JBinaryTreeMap<Key extends Comparable<Key>, Value> implements JMap<
     }
 
 
+    /**
+     * Найти в бинарном дереве ключ
+     * @param key ключ, необходимый для поиска
+     * @return {@code true} если ключ был найден
+     */
     @Override
     public boolean containsKey(Key key) {
         return getNode(key) != null;
     }
 
-    //Полный обход дерева пока не найдено значение
+    /**
+     * Найти в бинарном дереве значение
+     * @param value значение, необходимое для поиска
+     * @return {@code true} если значение было найдено
+     */
     @Override
     public boolean containsValue(Value value) {
         Node<Key, Value> source = root;

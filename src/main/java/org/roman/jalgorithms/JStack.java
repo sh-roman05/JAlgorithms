@@ -7,7 +7,6 @@ public class JStack<Value extends Comparable<Value>> {
     private int size = 0;
     Node<Value> head = null;
 
-
     private static class Node<T> {
         private T value = null;
         private Node<T> next = null;
@@ -19,7 +18,7 @@ public class JStack<Value extends Comparable<Value>> {
 
 
     /**
-     * Добавляет элемент в начало списка
+     * Добавляет элемент в стек
      * @param object элемент для добавления
      */
     public void push(Value object) {
@@ -34,9 +33,9 @@ public class JStack<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает первый элемент из списка и удаляет его
-     * @throws NoSuchElementException если список пустой
-     * @return первый элемент из связного списка
+     * Возвращает первый элемент из стека и удаляет его
+     * @throws NoSuchElementException если стек пустой
+     * @return первый элемент из стека
      */
     Value pop() {
         if (head == null)
@@ -50,8 +49,8 @@ public class JStack<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает первый элемент списка и не удаляет его
-     * @throws NoSuchElementException если список пустой
+     * Возвращает первый элемент стека и не удаляет его
+     * @throws NoSuchElementException если стек пустой
      * @return первый элемент списка
      */
     Value peek() {
@@ -70,8 +69,8 @@ public class JStack<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает {@code true} если в коллекции отсутствуют элементы.
-     * @return {@code true} if this collection contains no elements
+     * Проверяет, пустой ли стек
+     * @return {@code true} если в стеке отсутствуют элементы
      */
     boolean isEmpty() {
         return head == null;

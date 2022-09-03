@@ -19,7 +19,7 @@ public class JQueue<Value extends Comparable<Value>> {
     }
 
     /**
-     * Добавляет значение
+     * Добавляет значение в очередь
      * @param value элемент, который требуется добавить в очередь
      */
     public void add(Value value) {
@@ -34,9 +34,9 @@ public class JQueue<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает первый элемент списка и не удаляет его
-     * @throws NoSuchElementException если список пустой
-     * @return первый элемент списка
+     * Возвращает элемент из очереди и не удаляет его
+     * @throws NoSuchElementException если очередь пустая
+     * @return элемент очереди
      */
     public Value peek() {
         if(head == null)
@@ -45,9 +45,9 @@ public class JQueue<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает первый элемент из списка и удаляет его
-     * @throws NoSuchElementException если список пустой
-     * @return первый элемент из связного списка
+     * Возвращает элемент из очереди и удаляет его
+     * @throws NoSuchElementException если очередь пустая
+     * @return элемент из очереди
      */
     public Value poll() {
         if (head == null)
@@ -71,8 +71,8 @@ public class JQueue<Value extends Comparable<Value>> {
     }
 
     /**
-     * Возвращает {@code true} если в коллекции отсутствуют элементы.
-     * @return {@code true} if this collection contains no elements
+     * Проверяет, пустая ли очередь
+     * @return {@code true} если в очереди отсутствуют элементы.
      */
     public boolean isEmpty() {
         return head == null;

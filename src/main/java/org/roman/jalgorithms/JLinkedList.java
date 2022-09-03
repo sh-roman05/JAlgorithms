@@ -71,6 +71,11 @@ public class JLinkedList<Value extends Comparable<Value>> {
         return false;
     }
 
+    /**
+     * Поиск индекса элемента в списке
+     * @param value элемент для поиска
+     * @return индекс искомого элемента
+     */
     public int indexOf(Value value) {
         Node<Value> search = head;
         int i = 0;
@@ -82,6 +87,11 @@ public class JLinkedList<Value extends Comparable<Value>> {
         return -1;
     }
 
+    /**
+     * Поиск элемента по индексу
+     * @param index индекс для поиска
+     * @return найденное значение
+     */
     public Value get(int index) {
         Node<Value> search = head;
         int i = 0;
@@ -93,9 +103,10 @@ public class JLinkedList<Value extends Comparable<Value>> {
         return null;
     }
 
-
-
-    //Добавить в конец
+    /**
+     * Добавляет элемент в конец списка
+     * @param value добавляемый элемент
+     */
     public void add(Value value) {
         Node<Value> temp = new Node<>(value);
         //Если лист пустой, то начало и конец списка указываем на новый элемент
@@ -109,6 +120,10 @@ public class JLinkedList<Value extends Comparable<Value>> {
         size++;
     }
 
+    /**
+     * Получить число элементов в списке
+     * @return число элементов в списке
+     */
     public int size() {
         return size;
     }
