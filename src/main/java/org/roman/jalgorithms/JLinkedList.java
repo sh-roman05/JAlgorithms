@@ -10,6 +10,9 @@ public class JLinkedList<Value extends Comparable<Value>> {
     private Node<Value> head = null;
     private Node<Value> tail = null;
 
+    //removeByIndex - выбросить IndexOfBoundEx?
+    //lastIndexOf
+
     private int size = 0;
 
     private static class Node<T> {
@@ -21,16 +24,58 @@ public class JLinkedList<Value extends Comparable<Value>> {
         }
     }
 
-    //Удаление по индексу
-    //Вставка по индексу
 
+
+    /**
+     * Очищает список
+     */
     public void clear() {
         head = tail = null;
         size = 0;
     }
 
+    /**
+     * Удаляет объект по индексу
+     * @param index индекс удаляемого элемента
+     * @return {@code true} если элемент удален
+     */
+    public boolean removeByIndex(int index) {
+        Node<Value> search = head;
+        Node<Value> previousNode = null;
+        int count = 0;
+        while (search != null) {
+            if(count == index) {
+                if (head == tail) {
+                    head = tail = null;
+                } else {
+                    //Объектов 2 или больше
+                    if (previousNode == null)
+                        head = search.next;
+                    else if(search.next == null) {
+                        previousNode.next = null;
+                        tail = previousNode;
+                    }
+                    else {
+                        previousNode.next = search.next;
+                    }
+                }
+                --size;
+                return true;
+            }
+            //Сохраняем ссылку на предыдущую ноду
+            previousNode = search;
+            search = search.next;
+            ++count;
+        }
+        return false;
+    }
 
-    //Удалить первое вхождение объекта
+
+    /**
+     * Удаляет первое вхождение объекта
+     * @param value элемент для поиска
+     * @return {@code true} если элемент удален
+     */
     public boolean remove(Value value) {
         Node<Value> search = head;
         Node<Value> previousNode = null;
@@ -61,6 +106,11 @@ public class JLinkedList<Value extends Comparable<Value>> {
         return false;
     }
 
+    /**
+     * Присутствует ли элемент в списке
+     * @param value элемент для поиска
+     * @return {@code true} если элемент найден
+     */
     public boolean contains(Value value) {
         Node<Value> search = head;
         while (search != null) {
