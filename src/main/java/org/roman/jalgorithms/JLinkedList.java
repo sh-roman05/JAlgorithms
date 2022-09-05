@@ -138,6 +138,23 @@ public class JLinkedList<Value extends Comparable<Value>> {
     }
 
     /**
+     * Поиск индекса последнего вхождения элемента в списке.
+     * Поскольку это односвязный список, для поиска нужен полный обход
+     * @param value элемент для поиска
+     * @return индекс искомого элемента
+     */
+    public int lastIndexOf(Value value) {
+        Node<Value> search = head;
+        int i = 0, result = -1;
+        while (search != null) {
+            if(value.equals(search.value)) result = i;
+            search = search.next;
+            ++i;
+        }
+        return result;
+    }
+
+    /**
      * Поиск элемента по индексу
      * @param index индекс для поиска
      * @return найденное значение
