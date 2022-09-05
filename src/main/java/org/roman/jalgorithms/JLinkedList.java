@@ -10,8 +10,9 @@ public class JLinkedList<Value extends Comparable<Value>> {
     private Node<Value> head = null;
     private Node<Value> tail = null;
 
-    //removeByIndex - выбросить IndexOfBoundEx?
-    //lastIndexOf
+    // if(true) throw new IndexOutOfBoundsException();
+    //add(1, el)
+    //index >= 0 && index <= this.size
 
     private int size = 0;
 
@@ -23,7 +24,6 @@ public class JLinkedList<Value extends Comparable<Value>> {
             this.value = value;
         }
     }
-
 
 
     /**
@@ -40,6 +40,8 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @return {@code true} если элемент удален
      */
     public boolean removeByIndex(int index) {
+        if(index >= 0 && index < this.size)
+            throw new IndexOutOfBoundsException();
         Node<Value> search = head;
         Node<Value> previousNode = null;
         int count = 0;
@@ -160,6 +162,8 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @return найденное значение
      */
     public Value get(int index) {
+        if(index >= 0 && index < this.size)
+            throw new IndexOutOfBoundsException();
         Node<Value> search = head;
         int i = 0;
         while (search != null) {
@@ -169,6 +173,23 @@ public class JLinkedList<Value extends Comparable<Value>> {
         }
         return null;
     }
+
+
+    /**
+     * Добавляет элемент в указанный индекс
+     * @param value добавляемый элемент
+     * @param index индекс
+     */
+    public void add(Integer index, Value value) {
+        if(index >= 0 && index <= this.size)
+            throw new IndexOutOfBoundsException();
+
+        //Вставляем в индекс
+
+
+
+    }
+
 
     /**
      * Добавляет элемент в конец списка

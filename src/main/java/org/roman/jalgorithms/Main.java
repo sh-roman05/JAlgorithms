@@ -14,5 +14,8 @@ public class Main {
         System.out.println(list.contains("qwe3"));
 
 
+        //LinkedList<String> list;
+        //list.remove(4);
+
     }
 }
