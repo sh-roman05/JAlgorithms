@@ -40,7 +40,7 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @return {@code true} если элемент удален
      */
     public boolean removeByIndex(int index) {
-        if(index >= 0 && index < this.size)
+        if(!(index >= 0 && index < this.size))
             throw new IndexOutOfBoundsException();
         Node<Value> search = head;
         Node<Value> previousNode = null;
@@ -162,7 +162,7 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @return найденное значение
      */
     public Value get(int index) {
-        if(index >= 0 && index < this.size)
+        if(!(index >= 0 && index < this.size))
             throw new IndexOutOfBoundsException();
         Node<Value> search = head;
         int i = 0;
@@ -181,13 +181,42 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @param index индекс
      */
     public void add(Integer index, Value value) {
-        if(index >= 0 && index <= this.size)
+        if(!(index >= 0 && index <= this.size))
             throw new IndexOutOfBoundsException();
-
         //Вставляем в индекс
-
-
-
+        Node<Value> temp = new Node<>(value);
+        //Список пустой
+        if(head == null) {
+            head = tail = temp;
+            size++;
+            return;
+        }
+        //В начало или между элементами
+        Node<Value> search = head;
+        Node<Value> previous = null;
+        int i = 0;
+        while (search != null) {
+            if(i == index) {
+                if(previous == null) {
+                    temp.next = head;
+                    head = temp;
+                } else {
+                    previous.next = temp;
+                    temp.next = search;
+                }
+                size++;
+                return;
+            }
+            else {
+                previous = search;
+                search = search.next;
+                i++;
+            }
+        }
+        //Добавление в конец
+        tail.next = temp;
+        tail = temp;
+        size++;
     }
 
 
