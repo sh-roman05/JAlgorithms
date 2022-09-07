@@ -10,7 +10,8 @@
 Сортировка вставками (insertionSort) </br>
 Сортировка выбором (selectionSort) </br>
 Быстрая сортировка (quickSort) </br>
-Сортировка слиянием (mergeSort) </br> </br>
+Сортировка слиянием (mergeSort) </br>
+Сортировка Шелла (shellSort) </br> </br>
 
 Связный список (JLinkedList) </br>
 Очередь (JQueue) </br>
