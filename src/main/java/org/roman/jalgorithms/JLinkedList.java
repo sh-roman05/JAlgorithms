@@ -10,10 +10,6 @@ public class JLinkedList<Value extends Comparable<Value>> {
     private Node<Value> head = null;
     private Node<Value> tail = null;
 
-    // if(true) throw new IndexOutOfBoundsException();
-    //add(1, el)
-    //index >= 0 && index <= this.size
-
     private int size = 0;
 
     private static class Node<T> {
@@ -39,7 +35,7 @@ public class JLinkedList<Value extends Comparable<Value>> {
      * @param index индекс удаляемого элемента
      * @return {@code true} если элемент удален
      */
-    public boolean removeByIndex(int index) {
+    public boolean remove(int index) {
         if(!(index >= 0 && index < this.size))
             throw new IndexOutOfBoundsException();
         Node<Value> search = head;

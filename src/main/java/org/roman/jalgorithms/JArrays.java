@@ -164,5 +164,38 @@ public class JArrays {
     }
 
 
+    /**
+     * Сортировка Шелла
+     */
+    public static <T extends Comparable<T>> void shellSort(T[] source) {
+        //Вычисление первичного шага. Оригинальный способ
+        int step = (source.length) / 2;
+        //Пока шаг еще больше 0. Идем этим шагом назад и меняем элементы.
+        while (step > 0) {
+            for (int i = step; i < source.length; i++) {
+                //Делаем шаг назад
+                int stepBack = i - step;
+                int stepCurrent = i;
+                while(stepBack >= 0 && source[stepBack].compareTo(source[stepCurrent]) > 0)
+                {
+                    var temp = source[stepCurrent];
+                    source[stepCurrent] = source[stepBack];
+                    source[stepBack] = temp;
+                    //Раз обмен состоялся, то идем назад и делаем еще один обмен
+                    stepCurrent = stepBack;
+                    stepBack -= step;
+                }
+            }
+            step /= 2;
+        }
+    }
+
+
+
+
+
+
+
+
 
 }

@@ -5,23 +5,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        JLinkedList<String> list = new JLinkedList<>();
-        list.add("qwe1");
-        list.add("qwe2");
-        //list.add("qwe3");
-
-        list.add(0, "ins");
-
-
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + " ");
+        Integer[] array = { 32, 95, 95, 16, 82, 24, 66, 35, 19, 19, 75, 54, 40, 42 };
+        JArrays.shellSort(array);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
         }
-
-
-
-
-
     }
 }

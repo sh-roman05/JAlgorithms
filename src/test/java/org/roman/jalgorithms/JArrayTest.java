@@ -64,6 +64,15 @@ public class JArrayTest {
         }
     }
 
+    @Test
+    public void JArraysTestShellSort() {
+        for (int i = 0; i < 10; i++) {
+            Integer[] randomArray = generateNewArray();
+            JArrays.shellSort(randomArray);
+            Assert.assertTrue(isSorted(randomArray));
+        }
+    }
+
     //Сгенерировать случайный массив
     private Integer[] generateNewArray() {
         int maxCapacity = random.nextInt(1000);
